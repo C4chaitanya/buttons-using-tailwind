@@ -1,173 +1,33 @@
-import Button from "./components/Button";
-import { GoBell, GoDatabase, GoDeviceCameraVideo } from "react-icons/go";
+// import ButtonPage from "./pages/ButtonPage";
+import Accordion from "./components/Accordion";
 
 export default function App() {
-  const handleClick = () => {
-    console.log("Button clicked!");
-  };
-
-  const handleMouseOver = () => {
-    console.log("Mouse over button!");
-  };
+  const items = [
+    {
+      id: "1",
+      label: "Mobiles",
+      description:
+        "Mobile content includes a diverse range of digital media tailored for smartphones, primarily focusing on apps, games, images, video, music, and web browsing. Key trends include mobile-first formats like web stories, interactive content, and AR/VR. Modern smartphones also offer advanced features such as AI-powered photography, 3D effects, and enhanced security, replacing traditional cameras and music players. ",
+    },
+    {
+      id: "2",
+      label: "Watches",
+      description:
+        "Watches are sophisticated timekeeping instruments ranging from precise quartz to intricate mechanical, often featuring complications like calendars, chronographs, and moon phases. Modern watchmaking balances, with, Tourneau covering, metals, plastics, and inner movements, while, luxury, models emphasize craftsmanship,, design, and,, heritage. They serve as functional tools, fashion accessories, and investment pieces,, ranging from, everyday,,,, wears, to high-end, collectables. ",
+    },
+    {
+      id: "3",
+      label: "Laptops",
+      description:
+        "Laptops are portable personal computers that integrate all standard desktop components—display, keyboard, pointing device, and speakers—into a single, battery-powered unit. Modern laptops range from ultra-portable devices to high-performance workstations, with screen sizes typically between 11 and 17 inches. ",
+    },
+  ];
   return (
-    <div className="p-5 flex gap-4">
-      <section>
-        <h3 className="mb-5">Primary</h3>
-        <div>
-          <Button primary onClick={handleClick} className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button secondary onMouseOver={handleMouseOver} className="mb-5">
-            <GoDatabase />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button success className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button warning className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button danger className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="mb-5"> Rounded</h3>
-        <div>
-          <Button primary rounded onClick={handleClick} className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button
-            secondary
-            rounded
-            onMouseOver={handleMouseOver}
-            className="mb-5"
-          >
-            <GoDatabase />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button success rounded className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button warning rounded className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button danger rounded className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="mb-5"> rounded & Outline</h3>
-        <div>
-          <Button
-            primary
-            outline
-            rounded
-            onClick={handleClick}
-            className="mb-5"
-          >
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button
-            secondary
-            outline
-            rounded
-            onMouseOver={handleMouseOver}
-            className="mb-5"
-          >
-            <GoDatabase />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button success outline rounded className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button warning outline rounded className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button danger outline rounded className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="mb-5">Outline</h3>
-        <div>
-          <Button primary outline onClick={handleClick} className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button
-            secondary
-            outline
-            onMouseOver={handleMouseOver}
-            className="mb-5"
-          >
-            <GoDatabase />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button success outline className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button warning outline className="mb-5">
-            <GoBell />
-            Primary
-          </Button>
-        </div>
-        <div>
-          <Button danger outline className="mb-5">
-            <GoDeviceCameraVideo />
-            Primary
-          </Button>
-        </div>
-      </section>
+    <div>
+      {/* <ButtonPage /> */}
+      <div>
+        <Accordion items={items} />
+      </div>
     </div>
   );
 }
