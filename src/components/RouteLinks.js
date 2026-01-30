@@ -1,6 +1,7 @@
 import AccordionPage from "../pages/AccordionPage";
 import DropdownPage from "../pages/DropdownPage";
 import ButtonPage from "../pages/ButtonPage";
+import ModalPage from "../pages/ModalPage";
 import Route from "../components/Route";
 
 export default function RouteLinks() {
@@ -16,6 +17,10 @@ export default function RouteLinks() {
 
       <Route path="/buttons">
         <ButtonPage />
+      </Route>
+
+      <Route path="/modal">
+        <ModalPage />
       </Route>
     </div>
   );
