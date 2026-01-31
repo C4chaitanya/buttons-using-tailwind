@@ -2,6 +2,7 @@ import AccordionPage from "../pages/AccordionPage";
 import DropdownPage from "../pages/DropdownPage";
 import ButtonPage from "../pages/ButtonPage";
 import ModalPage from "../pages/ModalPage";
+import TablePage from "../pages/TablePage";
 import Route from "../components/Route";
 
 export default function RouteLinks() {
@@ -21,6 +22,10 @@ export default function RouteLinks() {
 
       <Route path="/modal">
         <ModalPage />
+      </Route>
+
+      <Route path="/table">
+        <TablePage />
       </Route>
     </div>
   );
