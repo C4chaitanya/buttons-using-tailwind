@@ -1,35 +1,79 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import Button from "../components/Button";
 import Panel from "../components/Panel";
 
-export default function CounterPageWithReducer({ initialCount }) {
-  const [count, setCount] = useState(initialCount);
+const reducer = (state, action) => {
+  switch (action.type) {
+    case INCREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case DECREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    case SET_VALUE_TO_ADD:
+      return {
+        ...state,
+        valueToAdd: action.payload,
+      };
+    case UPDATE_COUNT:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0,
+      };
+    default:
+      return state;
+  }
+};
 
-  const [valueToAdd, setValueToAdd] = useState(0);
+const INCREMENT_COUNT = "increment-count";
+const DECREMENT_COUNT = "decrement-count";
+const SET_VALUE_TO_ADD = "set-value-to-add";
+const UPDATE_COUNT = "update-count";
+
+export default function CounterPageWithReducer({ initialCount }) {
+  const [state, dispatch] = useReducer(reducer, {
+    count: initialCount,
+    valueToAdd: 0,
+  });
+
+  console.log("state", state);
 
   const increment = () => {
-    setCount(count + 1);
+    dispatch({
+      type: INCREMENT_COUNT,
+    });
   };
 
   const decrement = () => {
-    setCount(count - 1);
+    dispatch({
+      type: DECREMENT_COUNT,
+    });
   };
 
   const handleChange = (event) => {
     const value = parseInt(event.target.value) || 0;
-    setValueToAdd(value);
+    dispatch({
+      type: SET_VALUE_TO_ADD,
+      payload: value,
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setCount(count + valueToAdd);
-    setValueToAdd(0);
+    dispatch({
+      type: UPDATE_COUNT,
+    });
   };
 
   return (
     <Panel className="w-70">
-      <h1 className="text-lg pb-5">Count: {count}</h1>
+      <h1 className="text-lg pb-5">Count: {state.count}</h1>
       <div className="flex flex-row gap-2">
         <Button primary rounded onClick={increment}>
           Increment
@@ -44,7 +88,7 @@ export default function CounterPageWithReducer({ initialCount }) {
           <label>Add a lot</label>
           <input
             type="number"
-            value={valueToAdd || ""}
+            value={state.valueToAdd || ""}
             onChange={handleChange}
             className="p-1 bg-gray-50 border border-gray-300"
           />
