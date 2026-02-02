@@ -4,6 +4,7 @@ import ButtonPage from "../pages/ButtonPage";
 import ModalPage from "../pages/ModalPage";
 import TablePage from "../pages/TablePage";
 import Route from "../components/Route";
+import CounterPage from "../pages/CounterPage";
 
 export default function RouteLinks() {
   return (
@@ -26,6 +27,10 @@ export default function RouteLinks() {
 
       <Route path="/table">
         <TablePage />
+      </Route>
+
+      <Route path="/counter">
+        <CounterPage initialCount={10} />
       </Route>
     </div>
   );

@@ -1,32 +1,11 @@
-import { useState } from "react";
+import { useSort } from "../hooks/useSort";
 import { GoArrowDown, GoArrowUp, GoArrowBoth } from "react-icons/go";
 import Table from "./Table";
 
 export default function SortableTable(props) {
   const { config, data } = props;
 
-  const [sortBy, setSortBy] = useState(null);
-
-  const [sortOrder, setSortOrder] = useState(null);
-
-  const handleClick = (label) => {
-    if (sortBy && label !== sortBy) {
-      setSortBy(label);
-      setSortOrder("asc");
-      return;
-    }
-
-    if (sortOrder === null) {
-      setSortOrder("asc");
-      setSortBy(label);
-    } else if (sortOrder === "asc") {
-      setSortOrder("desc");
-      setSortBy(label);
-    } else if (sortOrder === "desc") {
-      setSortBy(null);
-      setSortOrder(null);
-    }
-  };
+  const { handleClick, sortBy, sortOrder, sortedData } = useSort(data, config);
 
   const updatedConfig = config.map((column) => {
     if (!column.sortValue) {
@@ -48,27 +27,6 @@ export default function SortableTable(props) {
       ),
     };
   });
-
-  // only sort the data, if sortBy and sortOrder is not null
-  // Make a copy of data prop.
-  // Find the correct sortValue function and use it to sort the data.
-
-  let sortedData = data;
-  if (sortBy && sortOrder) {
-    const { sortValue } = config.find((column) => column.label === sortBy);
-
-    sortedData = [...data].sort((a, b) => {
-      const valueA = sortValue(a);
-      const valueB = sortValue(b);
-      const reverseOrder = sortOrder === "asc" ? 1 : -1;
-
-      if (typeof valueA === "string") {
-        return valueA.localeCompare(valueB) * reverseOrder;
-      } else {
-        return (valueA - valueB) * reverseOrder;
-      }
-    });
-  }
 
   return <Table {...props} config={updatedConfig} data={sortedData} />;
 
