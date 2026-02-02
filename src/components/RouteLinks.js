@@ -5,6 +5,7 @@ import ModalPage from "../pages/ModalPage";
 import TablePage from "../pages/TablePage";
 import Route from "../components/Route";
 import CounterPage from "../pages/CounterPage";
+import CounterPageWithReducer from "../pages/CounterPageWithReducer";
 
 export default function RouteLinks() {
   return (
@@ -31,6 +32,10 @@ export default function RouteLinks() {
 
       <Route path="/counter">
         <CounterPage initialCount={10} />
+      </Route>
+
+      <Route path="/counter-with-reducer">
+        <CounterPageWithReducer initialCount={1} />
       </Route>
     </div>
   );

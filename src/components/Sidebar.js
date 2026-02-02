@@ -26,6 +26,10 @@ export default function Sidebar() {
       label: "Counter",
       path: "/counter",
     },
+    {
+      label: "Counter with Reducer",
+      path: "/counter-with-reducer",
+    },
   ];
 
   const renderedItems = links.map((link) => {
